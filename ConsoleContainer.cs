@@ -159,8 +159,7 @@ namespace SimpleConsole
 
             for (int i = 0; i < height; i++)
             {
-                SetCursorPosition(0, i);
-                Console.Write(GetClearLine());
+                WriteInContainer(0, i, GetClearLine());
             }
 
             RemoveColor();

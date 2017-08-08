@@ -72,6 +72,18 @@ namespace SimpleConsole
             RemoveColor();
         }
 
+        #region Stabs
+        public override bool Attach(ConsoleContainer child)
+        {
+            return false;
+        }
+
+        public override bool Detach(ConsoleContainer child)
+        {
+            return false;
+        }
+        #endregion Stabs
+
         public void Append(string text)
         {
             this.text.Append(text);

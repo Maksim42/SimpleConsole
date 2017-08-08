@@ -37,6 +37,7 @@ namespace SimpleConsole
             fill = fillSymbol;
         }
 
+        #region Stabs
         public override bool Attach(ConsoleContainer child)
         {
             return false;
@@ -46,6 +47,7 @@ namespace SimpleConsole
         {
             return false;
         }
+        #endregion Stabs
 
         private string GetFillLine()
         {
