@@ -54,6 +54,8 @@ namespace SimpleConsole
             }
 
             innerSpace.Update();
+
+            DefultCursorPosition();
         }
 
         public override bool Attach(ConsoleContainer child)

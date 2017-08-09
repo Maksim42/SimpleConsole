@@ -30,6 +30,8 @@ namespace SimpleConsole
             }
 
             RemoveColor();
+
+            DefultCursorPosition();
         }
 
         public void SetFill(char fillSymbol)

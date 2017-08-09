@@ -151,6 +151,8 @@ namespace SimpleConsole
             {
                 children.Update();
             }
+
+            DefultCursorPosition();
         }
 
         public virtual void Clear()

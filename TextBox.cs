@@ -70,6 +70,8 @@ namespace SimpleConsole
             }
 
             RemoveColor();
+
+            DefultCursorPosition();
         }
 
         #region Stabs

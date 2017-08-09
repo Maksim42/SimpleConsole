@@ -11,7 +11,7 @@ namespace SimpleConsole
         public ConsoleColor selectedBackground;
         public ConsoleColor selectedForeground;
         private VerticalStack innerSpace;
-        private List<Menu.Option> options;
+        private List<Option> options;
         private int selectedOption;
 
         public MenuPage(Menu parentMenu)
@@ -24,7 +24,7 @@ namespace SimpleConsole
         private MenuPage(int left, int top, int width, int height)
             : base(left, top, width, height)
         {
-            options = new List<Menu.Option>();
+            options = new List<Option>();
             innerSpace = new VerticalStack(width, height);
             base.Attach(innerSpace);
         }
@@ -60,7 +60,7 @@ namespace SimpleConsole
         }
         #endregion Stabs
 
-        public bool AddOption(Menu.Option option)
+        public bool AddOption(Option option)
         {
             if (innerSpace.Attach(option.textBox))
             {
@@ -71,10 +71,11 @@ namespace SimpleConsole
             return false;
         }
 
-        public void RemoveOption(Menu.Option option)
+        public void RemoveOption(Option option)
         {
             options.Remove(option);
             innerSpace.Detach(option.textBox);
+            selectedOption = 0;
         }
 
         public void Input(ConsoleKey key)
@@ -90,14 +91,21 @@ namespace SimpleConsole
             }
         }
 
-        public int GetSelectionId()
+        public int SelectOption()
         {
             if (options.Count == 0)
             {
                 return 0;
             }
 
-            return options[selectedOption].id;
+            var selected = options[selectedOption];
+
+            if (selected.callback != null)
+            {
+                selected.callback();
+            }
+
+            return selected.id;
         }
 
         private void SelectionNext(int step)

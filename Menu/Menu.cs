@@ -13,18 +13,6 @@ namespace SimpleConsole
         private List<MenuPage> pages;
         private int optionId = 1;
 
-        internal sealed class Option
-        {
-            public TextBox textBox;
-            public int id;
-
-            public Option(string text, Menu menu, int id)
-            {
-                textBox = TextBox.GetTextBox(menu.width, menu.height, text);
-                this.id = id;
-            }
-        }
-
         public Menu(int width, int height)
             : this(0, 0, width, height)
         {
@@ -75,10 +63,15 @@ namespace SimpleConsole
 
         public int AddOption(string text)
         {
+            return AddOption(text, null);
+        }
+
+        public int AddOption(string text, Action callback)
+        {
             bool addOption = false;
 
             int curentOptionId = OptionId;
-            Option option = new Option(text, this, curentOptionId);
+            Option option = new Option(this, text, curentOptionId, callback);
 
             foreach (var page in pages)
             {
@@ -134,7 +127,7 @@ namespace SimpleConsole
                 DefultCursorPosition();
             }
 
-            return pages[CurentPage].GetSelectionId();
+            return pages[CurentPage].SelectOption();
         }
 
         public void PageShift(int step)
