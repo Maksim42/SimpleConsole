@@ -20,12 +20,12 @@ namespace SimpleConsole
         private static Window window;
 
         public ConsoleContainer(int width, int height)
-            : this(0, 0, width, height)
+            : this(width, height, 0, 0)
         {
 
         }
 
-        public ConsoleContainer(int left, int top, int width, int height)
+        public ConsoleContainer(int width, int height, int left, int top)
         {
             this.width = width;
             this.height = height;
@@ -70,7 +70,7 @@ namespace SimpleConsole
         {
             InitializeWindow();
 
-            return window.GetPage(top);
+            return window.CreatePage(top);
         }
 
         #region Propertys

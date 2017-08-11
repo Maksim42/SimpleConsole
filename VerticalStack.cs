@@ -8,17 +8,17 @@ namespace SimpleConsole
         private List<ConsoleContainer> innerContainers;
 
         public VerticalStack(int width, int height)
-            : this(0, 0, width, height)
+            : this(width, height, 0, 0)
         {
 
         }
 
-        public VerticalStack(int left, int top, int width, int height)
-            : base(left, top, width, height)
+        public VerticalStack(int width, int height, int left, int top)
+            : base(width, height, left, top)
         {
             innerContainers = new List<ConsoleContainer>();
 
-            innerSpace = new ConsoleContainer(0, 0, width, height);
+            innerSpace = new ConsoleContainer(width, height, 0, 0);
             base.Attach(innerSpace);
         }
 

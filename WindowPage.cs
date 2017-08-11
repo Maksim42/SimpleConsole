@@ -2,8 +2,8 @@
 {
     sealed class WindowPage : ConsoleContainer
     {
-        public WindowPage(int left, int top, int width, int height)
-            : base(left, top, width, height)
+        public WindowPage(int width, int height, int left, int top)
+            : base(width, height, left, top)
         {
             
         }

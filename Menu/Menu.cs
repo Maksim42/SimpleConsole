@@ -14,13 +14,13 @@ namespace SimpleConsole
         private int optionId = 1;
 
         public Menu(int width, int height)
-            : this(0, 0, width, height)
+            : this(width, height, 0, 0)
         {
 
         }
 
-        public Menu(int left, int top, int width, int height)
-            : base(left, top, width, height)
+        public Menu(int width, int height, int left, int top)
+            : base(width, height, left, top)
         {
             selectedBackground = ConsoleColor.White;
             selectedForeground = ConsoleColor.Black;
@@ -71,7 +71,7 @@ namespace SimpleConsole
             bool addOption = false;
 
             int curentOptionId = OptionId;
-            Option option = new Option(this, text, curentOptionId, callback);
+            MenuOption option = new MenuOption(this, text, curentOptionId, callback);
 
             foreach (var page in pages)
             {

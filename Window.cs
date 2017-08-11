@@ -44,9 +44,9 @@ namespace SimpleConsole
             //}
         }
 
-        public ConsoleContainer GetPage(int top)
+        public ConsoleContainer CreatePage(int top)
         {
-            var newPage = new WindowPage(0, top, windowWidth, windowHeight);
+            var newPage = new WindowPage(windowWidth, windowHeight, 0, top);
 
             bool attachResult = Attach(newPage);
 

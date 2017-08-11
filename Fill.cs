@@ -9,13 +9,13 @@ namespace SimpleConsole
         private string fillLine = "";
 
         public Fill(int width, int height) 
-            : base(width, height)
+            : this(width, height, 0, 0)
         {
 
         }
 
-        public Fill(int left, int top, int width, int height) :
-            base(left, top, width, height)
+        public Fill(int width, int height, int left, int top) :
+            base(width, height, left, top)
         {
             
         }

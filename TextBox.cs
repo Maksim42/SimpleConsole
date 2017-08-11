@@ -9,13 +9,13 @@ namespace SimpleConsole
         private StringBuilder text;
 
         public TextBox(int width, int height)
-            : this(0, 0, width, height)
+            : this(width, height, 0, 0)
         {
 
         }
 
-        public TextBox(int left, int top, int width, int height)
-            : base(left, top, width, height)
+        public TextBox(int width, int height, int left, int top)
+            : base(width, height, left, top)
         {
             text = new StringBuilder();
         }

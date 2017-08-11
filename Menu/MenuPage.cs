@@ -11,20 +11,20 @@ namespace SimpleConsole
         public ConsoleColor selectedBackground;
         public ConsoleColor selectedForeground;
         private VerticalStack innerSpace;
-        private List<Option> options;
+        private List<MenuOption> options;
         private int selectedOption;
 
         public MenuPage(Menu parentMenu)
-            : this(0, 0, parentMenu.Width, parentMenu.Height)
+            : this(parentMenu.Width, parentMenu.Height, 0, 0)
         {
             selectedBackground = parentMenu.selectedBackground;
             selectedForeground = parentMenu.selectedForeground;
         }
 
-        private MenuPage(int left, int top, int width, int height)
-            : base(left, top, width, height)
+        private MenuPage(int width, int height, int left, int top)
+            : base(width, height, left, top)
         {
-            options = new List<Option>();
+            options = new List<MenuOption>();
             innerSpace = new VerticalStack(width, height);
             base.Attach(innerSpace);
         }
@@ -60,7 +60,7 @@ namespace SimpleConsole
         }
         #endregion Stabs
 
-        public bool AddOption(Option option)
+        public bool AddOption(MenuOption option)
         {
             if (innerSpace.Attach(option.textBox))
             {
@@ -71,7 +71,7 @@ namespace SimpleConsole
             return false;
         }
 
-        public void RemoveOption(Option option)
+        public void RemoveOption(MenuOption option)
         {
             options.Remove(option);
             innerSpace.Detach(option.textBox);
